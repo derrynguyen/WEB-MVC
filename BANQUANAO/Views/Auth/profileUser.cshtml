@@ -1,0 +1,42 @@
+﻿@model BANQUANAO.Models.Users
+@{
+    ViewBag.Title = "profileUser";
+    Layout = "~/Views/Shared/Main.cshtml";
+}
+
+<div style="height:80vh;margin-top:20vh">
+
+    <div class="container" style="height:40vh">
+        <div class="row">
+            <div class="col-md-8">
+
+
+                <form action="/Auth/UploadAvatar/@Model.ID" method="post" enctype="multipart/form-data">
+                    <div style="display:flex; justify-content:start;align-items:center">
+                        <div style="display:flex; flex-direction:column;align-items:center">
+                            <img src="~/Content/Avatar/@Model.Avatar" style="border-radius: 100vh; width: 20vh; height: 20vh" />
+                            <label style="margin-top: -3vh;background-color:black;color:white" for="Avatar" class="btn">Avatar</label>
+                            <input type="file" class="form-control" style="width:9vh;display:none" id="Avatar" name="Avatar" accept="image/*" />
+                            <input type="hidden" value="@Model.FullName" id="FullName" name="FullName" class="form-control form-control-lg" style="border:1px solid gray" />
+                            <input type="hidden" value="@Model.UserName" id="UserName" name="UserName" class="form-control form-control-lg" style="border:1px solid gray" />
+                            <input type="hidden" value="@Model.Email" id="Email" name="Email" class="form-control form-control-lg" style="border:1px solid gray" />
+                            <input type="hidden" value="@Model.Andreas" id="Andreas" name="Andreas" class="form-control form-control-lg" style="border:1px solid gray" />
+                            <input type="hidden" value="@Model.ID" id="ID" name="ID" class="form-control form-control-lg" style="border:1px solid gray" />
+
+                        </div>
+                        <div style="margin-left:3vh">
+                            <p style="font-size:30px;font-weight:800; font-family:fontThanhHai">@Model.FullName</p>
+                            <p style="font-size:17px;font-weight:700; font-family:fontThanhHai">Nơi ở: @Model.Andreas</p>
+                            <button type="submit" class="btn btn-primary">Cập nhật thông tin</button>
+
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="col-md-4">.col-md-4</div>
+        </div>
+    </div>
+</div>
+

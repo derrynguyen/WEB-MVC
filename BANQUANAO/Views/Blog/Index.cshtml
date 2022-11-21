@@ -1,0 +1,80 @@
+﻿@model List<BANQUANAO.Models.Posts>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Main.cshtml";
+}
+
+<div class="container text-center " style="margin-top:20vh;margin-bottom:20vh; display:flex;flex-direction:column;align-items:center">
+    <h3>AMIRI BLOG</h3>
+    <div class="grid" style="--bs-columns: 4; --bs-gap: 5rem">
+        @if (Session["IDUser"] != null)
+        {
+            int ID = Convert.ToInt32(Session["IDUser"]);
+            string timePosts = DateTime.Now.ToString();
+            <form action="/blog/createPots" method="post" enctype="multipart/form-data">
+
+
+                <input type="hidden" value="@ID" id="ID" name="ID" class="form-control form-control-lg" style="border:1px solid gray" />
+                <input type="hidden" value="@timePosts" id="timePosts" name="timePosts" class="form-control form-control-lg" style="border:1px solid gray" />
+
+                <div class="form-outline" style="margin-top:20px">
+                    <textarea type="text" id="contentPots" name="contentPots" class="form-control form-control-lg" style="border:1px solid gray"></textarea>
+                    <label class="form-label" for="contentPots">Bạn đang nghĩ gì nè?</label>
+
+                </div>
+                <div class="form-outline" style="margin-top:15px">
+                    <input type="file" id="ImgPosts" name="ImgPosts" accept="image/*" />
+
+                </div>
+                <a class="abcdefghkj">
+                    <input type="submit" class="btn btn-primary mb-0" value="Đăng bài viết" />
+                </a>
+            </form>
+
+            foreach (var item in Model)
+            {
+                <div class="g-col-2 mt-5 " style="margin-top:20vh">
+                    <div class="card d-flex justify-content-center " style="width:60vh">
+                        <div class="d-flex justify-content-around align-items-center" style="margin-top:3vh">
+                            <h5 class="card-title" style="font-size:17px;color:gray">
+                                <img style="position:relative;left:-2vh" src="~/Content/Avatar/@item.Users.Avatar"
+                                     class="rounded-circle"
+                                     height="45"
+                                     loading="lazy" />
+                                Người đăng: <span style="font-size: 20px; color: black">@item.Users.FullName</span>
+                            </h5>
+
+                            <h5 class="card-title" style="font-size: 17px; color: gray">Thời gian: <span style="font-size: 20px; color: black ">@item.timePosts.ToString("dd/MM/yyyy")</span></h5>
+
+                        </div>
+                        <img src="~/Content/Blog/@item.ImgPosts" class="card-img-top" style="width:100%;margin-top:1vh" />
+                        <div class="card-body">
+                            <p class="card-text text-start">@item.contentPots</p>
+                            @*<a href="~/Blog/updateLike/@item.ID" class="container text-start">
+                                <span class=" translate-middle badge rounded-pill bg-danger" style="margin-left:-45vh;margin-top:2vh">
+                                    <i class="fa-solid fa-thumbs-up"></i>
+                                    <span id="count">@item.likePots</span>
+                                </span>
+                            </a>*@
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+else
+            {
+    <div style="height:30vh">
+        <span>Bạn cần đăng nhập tài khoản</span>
+
+    </div>
+            }
+
+
+
+    </div>
+  
+       
+   
+</div>
+

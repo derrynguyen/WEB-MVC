@@ -1,0 +1,41 @@
+﻿@model List<BANQUANAO.Models.ListProductBill>
+
+@{
+    ViewBag.Title = "DetailBill";
+    Layout = "~/Views/Shared/Main.cshtml";
+}
+
+<div class="container" style="margin-top:20vh;margin-bottom:1vh; height:40vh">
+    <h3 class="text-center">Chi tiết hóa đơn </h3>
+    <table class="table mt-1" style="margin-top:3vh">
+        <thead>
+            <tr>
+                <th scope="col">Tên sản phẩm</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">Size</th>
+                <th scope="col">Màu</th>
+                <th scope="col">Giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                int idUser = Convert.ToInt32(Session["idUser"]);
+                if (idUser == item.IDUser)
+                {
+                    <tr>
+                        <th scope="row">@item.nameProduct</th>
+                        <td>@item.Amount</td>
+                        <td>@item.sizeProduct</td>
+                        <td>@item.colorProduct</td>
+                        <td>@item.TotalPrice.ToString("#,##0").Replace(',', '.') VNĐ</td>
+
+                    </tr>
+                }
+            }
+
+
+        </tbody>
+    </table>
+</div>
+

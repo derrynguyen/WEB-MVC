@@ -1,0 +1,67 @@
+﻿@model List<BANQUANAO.Models.Products>
+
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/Main.cshtml";
+}
+
+
+
+<div class="container text-center mt-3" style="margin-bottom:20vh">
+    <div>
+        <div class="container text-center" style="margin-top:10px">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                <video autoplay="" allow="autoplay" loop="" muted="muted" playsinline="" style="width: 100%"><source src="https://thombrownevn.com/wp-content/uploads/2020/06/1813487637.mp4"></video>
+
+            </div>
+        </div>
+    </div>
+    <h2 style="font-family:fontThanhHai; color:gray;font-size:35px;margin-top:40px">Sản phẩm mới</h2>
+    <div class="container text-center mt-4">
+        <div class="row row-cols-4 " style="margin-left:30px">
+            @foreach (var item in Model)
+            {
+                <div class="col" style=" margin-top:20px">
+                    <a href="/Products/Detail/@item.idProduct" style="font-size: 12px; font-family: fontThanhHai; text-decoration: none; color:gray">
+                        <div class="card" style="width: 10rem; border: none; text-decoration: none; z-index: -100">
+
+                            <img style="width:100%;" src="~/Content/Images/Product/@item.img1Product" class="card-img-top" alt="...">
+
+                            <div class="card-body" style=" z-index: 100; height:24vh">
+                                <h5 class="card-title">@item.Brand.nameBrand</h5>
+                                <p class="card-text" style="font-size: 15px; font-family: fontThanhHai">@item.nameProduct</p>
+                                <p class="card-text" style="font-size: 18px; font-family: fontThanhHai">@item.priceProduct.ToString("#,##0").Replace(',', '.') VNĐ</p>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            }
+
+        </div>
+    </div>
+    <h2 style="font-family:fontThanhHai; color:gray;font-size:35px;margin-top:60px">Sản phẩm bán chạy</h2>
+    <div class="container text-center mt-4">
+        <div class="row row-cols-4" style="margin-left:30px">
+            @foreach (var item in Model)
+            {
+                <div class="col" style=" margin-top:20px">
+                    <a href="/Products/Detail/@item.idProduct" style="font-size: 12px; font-family: fontThanhHai; text-decoration: none; color:gray">
+                        <div class="card" style="width: 13rem; border: none; text-decoration: none; z-index: -100">
+
+                            <img style="width:100%;" src="~/Content/Images/Product/@item.img1Product" class="card-img-top" alt="...">
+
+                            <div class="card-body" style=" z-index: 100">
+                                <h5 class="card-title">@item.Brand.nameBrand</h5>
+                                <p class="card-text" style="font-size: 15px; font-family: fontThanhHai">@item.nameProduct</p>
+                                <p class="card-text" style="font-size: 18px; font-family: fontThanhHai">@item.priceProduct.ToString("C")</p>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

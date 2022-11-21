@@ -1,0 +1,32 @@
+﻿@font-face {
+    font-family: fontThanhHai;
+    src: url('./font/ProximaNova-Bold.woff');
+}
+
+@font-face {
+    font-family: fontThanhHai;
+    src: url('./font/ProximaNova-Extrabld.woff');
+}
+
+@font-face {
+    font-family: fontThanhHai;
+    src: url('./fonts/ProximaNova-Light.woff');
+}
+
+@font-face {
+    font-family: fontThanhHai;
+    src: url('./font//ProximaNova-Regular.woff');
+}
+
+@font-face {
+    font-family: fontThanhHai;
+    src: url('./font/ProximaNova-Semibold.woff');
+}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 12px;
+    font-family: fontThanhHai;
+    height:100vh;
+}

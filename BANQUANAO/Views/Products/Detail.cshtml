@@ -1,0 +1,83 @@
+﻿@model BANQUANAO.Models.Products
+
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/Main.cshtml";
+}
+
+<div class="container " style="margin-bottom:15vh;margin-top:20vh">
+  
+
+    <div class="row">
+        <div class="col-4">
+            <img src="~/Content/Images/Product/@Model.img1Product" style="width:100%" />
+        </div>
+        <div class="col-8" style="font-family:fontThanhHai">
+            <h3 style=" font-size:38px">@Model.nameProduct</h3>
+            <p style=" font-size:20px">@Model.priceProduct.ToString("#,##0").Replace(',', '.') VNĐ</p>
+
+            @if (Model.AmountProduct > 0)
+            {
+                <p style="font-size: 16px">Tình trạnh: <span style="color:green; font-size:19px">Còn hàng</span></p>
+            }
+            else
+            {
+                <p style="font-size: 16px">Tình trạnh :<span style="color:red; font-size:19px">Hết hàng</span></p>
+
+            }            
+            <p style="font-size:16px">Dành cho: <span style="color:black; font-size:19px">@Model.sexProduct</span></p>
+
+            <p style="font-size:16px">Màu sắc: <span style="color:black; font-size:19px">@Model.colorProduct</span></p>
+            <p style="font-size: 16px">Chất liệu: <span style="color: black; font-size: 19px">@Model.materialProduct</span></p>
+            <p style="font-size: 16px">Hãng sản xuất: <span style="color: black; font-size: 19px">@Model.Brand.nameBrand</span></p>
+            <p style="font-size: 16px">Nơi sản xuất: <span style="color: black; font-size: 19px">@Model.AndreasProduct</span></p>
+            <p style="font-size: 16px">Phiên bản: <span style="color: black; font-size: 19px">@Model.versionProduct</span></p>
+
+
+
+            <form action="/Cart/ThemVaoGio" method="post">
+                @{
+                    int idUser = Convert.ToInt32(Session["idUser"]);
+                }
+                <input type="hidden" name="Image" id="Image" value="@Model.img1Product" />
+                <input type="hidden" name="productID" id="productID" value="@Model.idProduct" />
+                <input type="hidden" name="nameProduct" id="nameProduct" value="@Model.nameProduct" />
+                <input type="hidden" name="priceProduct" id="priceProduct" value="@Model.priceProduct" />
+
+                <input type="hidden" name="colorProduct" id="colorProduct" value="@Model.colorProduct" />
+
+                <input type="hidden" name="IDUser" id="IDUser" value="@idUser" />
+                <h3>Size</h3>
+                <div class="form-outline" style="width:30vh">
+                    <select class="form-select"
+                            id="sizeProduct"
+                            name="sizeProduct">
+                        >
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </select>
+                </div>
+                <h3>Số lượng</h3>
+                <input type="number" name="Amount" id="Amount" value="1" />
+                <button type="submit" class="btn  mt-3" style="border-radius: 0; background-color: #333333;color:white">
+                    Thêm vào giỏ hàng
+                </button>
+            </form>
+
+
+
+            @*<a class="text-decoration-none" style="color: white" href="@Url.Action("ThemVaoGio", "Cart", new { productID = Url.RequestContext.RouteData.Values["id"] })"> Thêm giỏ hàng</a>*@
+
+        </div>
+        <h3 style="margin-top:30px">Lịch sử thương hiệu: <span style="color:red">@Model.Brand.nameBrand</span></h3>
+        <p>@Model.Brand.storyBrand</p>
+        <button type="button" class="btn btn-warning mt-3 w-25" style="border-radius:0">
+            <a class="text-decoration-none" style="color: black" href="@Url.Action("Index","Products")"> Quay lại</a>
+
+        </button>
+
+
+    </div>
+</div>
