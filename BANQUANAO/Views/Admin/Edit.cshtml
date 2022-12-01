@@ -1,0 +1,151 @@
+﻿@model BANQUANAO.Models.Products
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+<div style="width:100%;height:100vh">
+    <div class="container mt-5 mb-10" >
+        <h3>Sửa sản phẩm</h3>
+        <form action="/admin/EditProduct/@Model.idProduct" method="post" enctype="multipart/form-data">
+            <input type="hidden" id="idProduct" name="idProduct" class="form-control" value="@Model.idProduct" />
+
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="nameProduct">Tên sản phẩm</label>
+
+                        <input type="text" id="nameProduct" name="nameProduct" class="form-control" value="@Model.nameProduct" />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="priceProduct">Giá sản phẩm</label>
+
+                        <input type="number" id="priceProduct" name="priceProduct" class="form-control" value="@Model.priceProduct" />
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="colorProduct">Màu sắc</label>
+
+                        <input type="text" id="colorProduct" name="colorProduct" class="form-control" value="@Model.colorProduct" />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="materialProduct">Chất liệu</label>
+
+                        <input type="text" id="materialProduct" name="materialProduct" class="form-control" value="@Model.materialProduct" />
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="AndreasProduct">Nơi sản xuất</label>
+
+                        <input type="text" id="AndreasProduct" name="AndreasProduct" class="form-control" value="@Model.AndreasProduct" />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="versionProduct">Phiên bản</label>
+
+                        <input type="text" id="versionProduct" name="versionProduct" class="form-control" value="@Model.versionProduct" />
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="AmountProduct">Số lượng</label>
+
+                        <input type="number" id="AmountProduct" name="AmountProduct" class="form-control" value="@Model.AmountProduct" />
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-outline">
+                        <select class="form-select"
+                                id="sexProduct"
+                                name="sexProduct">
+                            >
+                            <option value="1">Dành cho nam</option>
+                            <option value="2">Dành cho nữ</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <select class="form-select"
+                                id="idBrand"
+                                name="idBrand">
+                            @foreach (var brand in ViewBag.Brand)
+                            {
+                                <option value="@brand.idBrand">@brand.nameBrand</option>
+
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="Type" class="form-label">Loại quần áo</label>
+                <select class="form-select"
+                        id="typeProduct"
+                        name="typeProduct">
+
+                    <option value="1">ÁO SƠ MI</option>
+                    <option value="2">ÁO POLO</option>
+                    <option value="3">ÁO NỈ</option>
+                    <option value="4">QUẦN</option>
+                    <option value="5">GIÀY</option>
+                    <option value="6">BALO</option>
+                    <option value="7">ÁO PHÔNG</option>
+                    <option value="8">ÁO LEN</option>
+                    <option value="9">ÁO KHOÁC</option>
+                    <option value="10">QUẦN SORT</option>
+                    <option value="11">TÚI-VÍ</option>
+                    <option value="12">VALLI KÉO</option>
+                    <option value="13">PHỤ KIỆN</option>
+                    <option value="14">VÁY</option>
+
+                </select>
+            </div>
+            <h5 class="modal-title" id="exampleModalLabel" style="margin-bottom:5vh">Ảnh sản phẩm</h5>
+
+            <!-- Text input -->
+            <div class="form-outline mb-4">
+                <label>Upload hình 1</label>
+                <input type="file" class="form-control" id="img1Product" name="img1Product" value="@Model.img1Product" accept="image/*">
+            </div>
+
+            <!-- Text input -->
+            <div class="form-outline mb-4">
+                <label>Upload hình 1</label>
+                <input type="file" class="form-control" id="img2Product" name="img2Product" value="@Model.img2Product" accept="image/*">
+            </div>
+
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <label>Upload hình 1</label>
+                <input type="file" class="form-control" id="img3Product" name="img3Product" value="@Model.img3Product" accept="image/*">
+            </div>
+            <div class="mb-3">
+                <label for="Time" class="form-label">Thơi gian nhập hàng</label>
+                <input type="date" class="form-control" id="releaseProduct" name="releaseProduct" value="@Model.releaseProduct">
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Sửa sản phẩm</button>
+        </form>
+    </div>
+</div>
+
+

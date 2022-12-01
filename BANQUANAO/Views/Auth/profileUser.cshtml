@@ -35,7 +35,25 @@
 
 
             </div>
-            <div class="col-md-4">.col-md-4</div>
+            <div class="col-md-4">
+                <h3>Thông tin cá nhân</h3>
+                <p style="font-size:25px;font-family:fontThanhHai">Họ và tên : <span>@Model.FullName</span></p>
+                <p style="font-size:25px;font-family:fontThanhHai">Email : <span>@Model.Email</span></p>
+                <p style="font-size:25px;font-family:fontThanhHai">
+                    Vai trò : @{
+                        if (Model.Role == null)
+                        {
+                            <span>Khách hàng</span>
+                        }
+                        else
+                        {
+                            <span>Nhân viên</span>
+
+                        }
+                    }
+                </p>
+                <p style="font-size:25px;font-family:fontThanhHai">Địa chỉ : <span>@Model.Andreas</span></p>
+            </div>
         </div>
     </div>
 </div>

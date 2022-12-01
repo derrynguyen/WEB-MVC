@@ -190,190 +190,20 @@
                         <span class="badge badge-success rounded-pill d-inline">@item.AmountProduct</span>
                     </td>
                     <td>@item.releaseProduct.ToString("M/d/yyyy")</td>
-                    <td>
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal1">
-                            Chỉnh sửa
+                    <td style="display:flex;justify-content:space-around;align-items:center">
+                        <button type="submit" class="btn">
+                            <a style="color: black" href="/admin/edit/@item.idProduct">Chỉnh sửa</a>
                         </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal1" tabindex="-1">
-                            <div class="modal-dialog" s>
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa sản phẩm</h5>
-                                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="/admin/AddProduct" method="post" enctype="multipart/form-data">
-                                            <!-- 2 column grid layout with text inputs for the first and last names -->
-                                            <div class="row mb-4">
-                                                <div class="col">
-                                                    <div class="form-outline">
-                                                        <input type="text" id="nameProduct" name="nameProduct" value="@ViewBag.nameProduct" class="form-control" />
-                                                        <label class="form-label" for="nameProduct">Tên sản phẩm</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="form-outline">
-                                                        <input type="number" id="priceProduct" name="priceProduct" value="priceProduct" class="form-control" />
-                                                        <label class="form-label" for="priceProduct">Giá sản phẩm</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-4">
-                                                <div class="col">
-                                                    <div class="form-outline">
-                                                        <input type="text" id="colorProduct" name="colorProduct" class="form-control" />
-                                                        <label class="form-label" for="colorProduct">Màu sắc</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="form-outline">
-                                                        <input type="text" id="materialProduct" name="materialProduct" class="form-control" />
-                                                        <label class="form-label" for="materialProduct">Chất liệu</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-4">
-                                                <div class="col">
-                                                    <div class="form-outline">
-                                                        <input type="text" id="AndreasProduct" name="AndreasProduct" class="form-control" />
-                                                        <label class="form-label" for="AndreasProduct">Nơi sản xuất</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="form-outline">
-                                                        <input type="text" id="versionProduct" name="versionProduct" class="form-control" />
-                                                        <label class="form-label" for="versionProduct">Phiên bản</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-4">
-                                               
-                                                <div class="col">
-                                                    <div class="form-outline">
-                                                        <input type="number" id="AmountProduct" name="AmountProduct" class="form-control" />
-                                                        <label class="form-label" for="AmountProduct">Số lượng</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-4">
-                                                <div class="col">
-                                                    <div class="form-outline">
-                                                        <select class="form-select"
-                                                                id="sexProduct"
-                                                                name="sexProduct">
-                                                            >
-                                                            <option value="Nam">Dành cho nam</option>
-                                                            <option value="Nữ">Dành cho nữ</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="form-outline">
-                                                        <select class="form-select"
-                                                                id="idBrand"
-                                                                name="idBrand">
-                                                            @foreach (var brand in ViewBag.Brand)
-                                                            {
-                                                                <option value="@brand.idBrand">@brand.nameBrand</option>
-
-                                                            }
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="Type" class="form-label">Loại quần áo</label>
-                                                <select class="form-select"
-                                                        id="typeProduct"
-                                                        name="typeProduct">
-                                                    <option value="1">ÁO SƠ MI</option>
-                                                    <option value="2">ÁO POLO</option>
-                                                    <option value="3">ÁO NỈ</option>
-                                                    <option value="4">QUẦN</option>
-                                                    <option value="5">GIÀY</option>
-                                                    <option value="6">BALO</option>
-                                                    <option value="7">ÁO PHÔNG</option>
-                                                    <option value="8">ÁO LEN</option>
-                                                    <option value="9">ÁO KHOÁC</option>
-                                                    <option value="10">QUẦN SORT</option>
-                                                    <option value="11">TÚI-VÍ</option>
-                                                    <option value="12">VALLI KÉO</option>
-                                                    <option value="13">PHỤ KIỆN</option>
-                                                    <option value="14">VÁY</option>
-
-                                                </select>
-                                            </div>
-                                            <h5 class="modal-title" id="exampleModalLabel" style="margin-bottom:5vh">Ảnh sản phẩm</h5>
-
-                                            <!-- Text input -->
-                                            <div class="form-outline mb-4">
-                                                <label>Upload hình 1</label>
-                                                <input type="file" class="form-control" id="img1Product" name="img1Product" accept="image/*">
-                                            </div>
-
-                                            <!-- Text input -->
-                                            <div class="form-outline mb-4">
-                                                <label>Upload hình 1</label>
-                                                <input type="file" class="form-control" id="img2Product" name="img2Product" accept="image/*">
-                                            </div>
-
-                                            <!-- Email input -->
-                                            <div class="form-outline mb-4">
-                                                <label>Upload hình 1</label>
-                                                <input type="file" class="form-control" id="img3Product" name="img3Product" accept="image/*">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="Time" class="form-label">Thơi gian nhập hàng</label>
-                                                <input type="date" class="form-control" id="releaseProduct" name="releaseProduct">
-                                            </div>
-
-                                            <!-- Submit button -->
-                                            <button type="submit" class="btn btn-primary btn-block mb-4">Thêm sản phẩm</button>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-success" data-mdb-toggle="modal" data-mdb-target="#exampleModal2">
-                           Xóa
+                        <button type="submit" class="btn ">
+                            <a style="color:black" href="/admin/Delete/@item.idProduct">Xóa</a>
                         </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-
-                                    <div class="modal-header">
-                                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="admin/DeleteProduct/@item.idProduct">
-                                            Bạn chắc chắn muốn xóa @item.nameProduct
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Đóng</button>
-                                        <button type="submit" class="btn btn-primary">Xác nhận</button>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
-    <div colspan="9">
-        <ul class="pagination justify-content-center " style="margin-left:10vh; margin-top:8vh">
+    <div colspan="9" style="margin-left:10vh; margin-top:3vh;padding:10px">
+        <ul class="pagination justify-content-center " >
             <li class="page-item">
                 <a class="page-link" href="#" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>

@@ -17,6 +17,19 @@ namespace BANQUANAO.Controllers
         {
             return View();
         }
+        public ActionResult Edit(int id)
+        {
+            Products pro = db.Products.Where(row => row.idProduct == id).FirstOrDefault();
+                        ViewBag.Brand = db.Brands.ToList();
+
+            return View(pro);
+        }
+        public ActionResult Delete(int id)
+        {
+            Products pro = db.Products.Where(row => row.idProduct == id).FirstOrDefault();
+
+            return View(pro);
+        }
         public ActionResult listProducts(int page = 0)
         {
             ViewBag.Brand = db.Brands.ToList();
@@ -31,19 +44,10 @@ namespace BANQUANAO.Controllers
             int ChuyenTrang = (page - 1) * noOfRecordPerpage;
             ViewBag.page = page;
             ViewBag.noOfPages = noOfPages;
-            products = products.Skip(ChuyenTrang).Take(noOfRecordPerpage).ToList();
-
-            ///Chỉnh sửa sản phẩm
-            foreach (Products pro in products)
-            {
-                Products oldPro = db.Products.Find(pro.idProduct);
-                oldPro.nameProduct = pro.nameProduct;
-
-            }
-
+            products = products.Skip(ChuyenTrang).Take(noOfRecordPerpage).ToList();    
             return View(products);
         }
-
+       
         [HttpPost]
         public ActionResult AddProduct(Products p, HttpPostedFileBase img1Product, HttpPostedFileBase img2Product, HttpPostedFileBase img3Product)
 
@@ -97,6 +101,47 @@ namespace BANQUANAO.Controllers
             }
             return RedirectToAction("Index");
 
+        }
+        public ActionResult DeleteProducts(int id)
+        {
+            Products pro = db.Products.Where(row => row.idProduct == id).FirstOrDefault();
+            db.Products.Remove(pro);
+            db.SaveChanges();
+            return RedirectToAction("listProducts", "Admin");
+        }
+        public ActionResult EditProduct(Products pro, HttpPostedFileBase img1Product)
+        {
+            Products pronew = db.Products.Where(row => row.idProduct == pro.idProduct).FirstOrDefault();
+            pronew.nameProduct = pro.nameProduct;
+            pronew.priceProduct = pro.priceProduct;
+            pronew.colorProduct = pro.colorProduct;
+            pronew.materialProduct = pro.materialProduct;
+            pronew.AndreasProduct = pro.AndreasProduct;
+            pronew.versionProduct = pro.versionProduct;
+           
+            pronew.typeProduct = pro.typeProduct;
+            pronew.sexProduct = pro.sexProduct;
+            pronew.idBrand = pro.idBrand;
+            pronew.rateProduct = pro.rateProduct;
+            pronew.AmountProduct = pro.AmountProduct;
+            pronew.releaseProduct = pro.releaseProduct;
+
+            if (img1Product != null && img1Product.ContentLength > 0)
+            {
+                int id = int.Parse(db.Products.ToList().Last().idProduct.ToString());
+
+                string _FileName = "";
+                int index = img1Product.FileName.IndexOf('.');
+                _FileName = "item1" + id.ToString() + "." + img1Product.FileName.Substring(index + 1);
+                string _path = Path.Combine(Server.MapPath("~/Content/Images/Product"), _FileName);
+                img1Product.SaveAs(_path);
+
+                Products unv = db.Products.FirstOrDefault(x => x.idProduct == id);
+                unv.img1Product = _FileName;
+                db.SaveChanges();
+            }
+            db.SaveChanges();
+            return RedirectToAction("listProducts", "Admin");
         }
     }
 }

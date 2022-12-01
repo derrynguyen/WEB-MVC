@@ -1,0 +1,21 @@
+﻿@model BANQUANAO.Models.Products
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<div style="width:100%;height:100vh">
+    <div class="container mt-5 mb-10">
+        <h3>Xóa sản phẩm</h3>
+        <form action="/admin/DeleteProducts/@Model.idProduct" method="post" enctype="multipart/form-data">
+            <input type="hidden" id="idProduct" name="idProduct" class="form-control" value="@Model.idProduct" />
+            <input type="hidden" id="nameProduct" name="nameProduct" class="form-control" value="@Model.nameProduct" />
+            <h1>Bạn có đồng ý xóa @Model.nameProduct</h1>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Xóa sản phẩm</button>
+        </form>
+    </div>
+</div>
+
