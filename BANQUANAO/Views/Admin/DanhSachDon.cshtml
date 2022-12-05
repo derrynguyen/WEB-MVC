@@ -1,0 +1,70 @@
+﻿@model List<BANQUANAO.Models.Order>
+
+@{
+    ViewBag.Title = "Danh sách đơn hàng";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<div class="container" style="margin-bottom:5vh;margin-top:5vh ; height:60vh">
+    <h2>Danh sách đơn hàng của khách hàng</h2>
+    <button class="btn btn-light">
+        <a href="~/Admin/DetailBill">Sản phẩm khách hàng đặt</a>
+    </button>
+    <table class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+            <tr>
+                <th>Người mua</th>
+                <th>Mã đơn</th>
+                <th>Trạng thái giao hàng</th>
+                <th>Trạng thái thanh toán</th>
+                <th>Trạng thái xác nhận</th>
+                <th>Tổng đơn giá</th>
+                <th>Tùy chọn</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+
+                                <div class="ms-3">
+                                    <p class="fw-bold mb-1">@item.Users.FullName</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="fw-normal mb-1">@item.idHoaDon</p>
+                        </td>
+                        <td>
+                            <span class="badge badge-success rounded-pill d-inline">@item.StatusShip</span>
+                        </td>
+                        <td>
+                            <span class="badge badge-success rounded-pill d-inline">@item.StatusPayment</span>
+                        </td>
+                        <td>
+                            <span class="badge badge-success rounded-pill d-inline">@item.StatusOrder</span>
+                        </td>
+                        <td>
+                            <p class="fw-normal mb-1">@item.PriceSum VNĐ</p>
+                        </td>
+                        <td>
+                                <p class="fw-normal mb-1">
+                                    <a href="~/admin/EditDon/@item.OrderID">Chỉnh sửa đơn</a>
+                                </p>
+                            <hr/>
+                                <p class="fw-normal mb-1">
+                                    <a href="~/admin/XoaDon/@item.OrderID">Xóa đơn</a>
+                                </p>
+                        </td>
+                    </tr>
+
+
+            }
+
+        </tbody>
+    </table>
+</div>
+

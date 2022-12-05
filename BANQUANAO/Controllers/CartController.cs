@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using System.Web.UI;
 
 namespace BANQUANAO.Controllers
 {
@@ -64,29 +65,35 @@ namespace BANQUANAO.Controllers
             return RedirectToAction("Index", "Cart");
 
         }
-        public ActionResult DonHang()
+        public ActionResult DonHang(int page = 0)
         {
           
             List<Order> order = db.Order.ToList();
-
+            //int noOfRecordPerpage = 1;
+            //int noOfPages = Convert.ToInt32(Math.Ceiling
+            //    (Convert.ToDouble(order.Count) / Convert.ToDouble(noOfRecordPerpage)));
+            //int ChuyenTrang = (page - 1) * noOfRecordPerpage;
+            //ViewBag.page = page;
+            //ViewBag.noOfPages = noOfPages;
+            //order = order.Skip(ChuyenTrang).Take(noOfRecordPerpage).ToList();
             return View(order);
         }
         [HttpPost]
-        public ActionResult Payment(Order o, int IDUser )
+        public ActionResult Payment(Order o, int IDUser)
         {
-            CartItem cart = db.CartItem.Where(row => row.IDUser == IDUser).FirstOrDefault();
-            if (cart.IDUser == IDUser)
+            CartItem cart = db.CartItem.Where(row => row.ID == IDUser).FirstOrDefault();
+            if (cart.ID == IDUser)
             {
-                db.CartItem.RemoveRange(db.CartItem.Where(row => row.IDUser == IDUser));
+                db.CartItem.RemoveRange(db.CartItem.Where(row => row.ID == IDUser));
                 db.SaveChanges();
 
             }
 
             db.Order.Add(o);
             db.SaveChanges();
-            
 
-            
+
+
             List<Order> order = db.Order.ToList();
 
             return RedirectToAction("DonHang", "Cart");
@@ -94,8 +101,10 @@ namespace BANQUANAO.Controllers
 
         public ActionResult DetailBill()
         {
-
             List<ListProductBill> bill = db.ListProductBill.ToList();
+
+
+          
             return View(bill);
 
             //return RedirectToAction("DetailBill", "Cart");

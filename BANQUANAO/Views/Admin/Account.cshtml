@@ -1,0 +1,80 @@
+﻿@model List<BANQUANAO.Models.Users>
+@{
+    ViewBag.Title = "Account";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<div class="container mt-5">
+    <table class="table align-middle mb-0 bg-white">
+        <h2>Danh sách tài khoản</h2>
+        <thead class="bg-light">
+            <tr>
+                <th>Ảnh đại diện</th>
+                <th>Họ và tên</th>
+                <th>Email</th>
+                <th>Địa chỉ</th>
+                <th>Số điện thoại</th>
+
+                <th>Vai trò</th>
+
+                <th>Tùy chỉnh</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img src="~/Content/Avatar/@item.Avatar"
+                                 alt=""
+                                 style="width: 70px; height: 70px"
+                                 class="rounded-circle" />
+
+                        </div>
+                    </td>
+                    <td>
+                        <p class="fw-normal mb-1">@item.FullName</p>
+                    </td>
+                    <td>
+                        <p class="fw-normal mb-1">@item.Email</p>
+                    </td>
+
+                    <td>
+                        <p class="fw-normal mb-1">@item.Andreas</p>
+
+                    </td>
+                    <td>
+                        <p class="fw-normal mb-1">@item.phoneNumber</p>
+
+                    </td>
+                    <td>
+                        @if (item.Role == null)
+                        {
+                            <p class="fw-normal mb-1">Khách hàng</p>
+
+                        }
+                        else
+                        {
+                            <p class="fw-normal mb-1" style="color:red">Nhân viên</p>
+
+                        }
+
+                    </td>
+                    <td style="display:flex;flex-direction:column;align-items:center">
+                        <button type="submit" class="btn">
+                            <a style="color: black" href="/admin/EditUser/@item.ID">Chỉnh sửa</a>
+                        </button>
+                        <button type="submit" class="btn mt-2">
+                            <a style="color:black" href="/admin/deleteUser/@item.ID">Xóa</a>
+                        </button>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    </div>
+</div>
+

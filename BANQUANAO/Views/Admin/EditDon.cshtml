@@ -1,0 +1,64 @@
+﻿@model BANQUANAO.Models.Order
+
+@{
+    ViewBag.Title = "Xác nhận đơn hàng";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<div style="width:100%;height:100vh">
+    <div class="container mt-5 mb-10">
+        <h3>Xác nhận đơn hàng cho khách hàng : <span style="color:green">@Model.Users.FullName</span></h3>
+        <form action="/admin/EditDonHang/@Model.OrderID" method="post">
+            <input type="hidden" id="OrderID" name="OrderID" class="form-control" value="@Model.OrderID" />
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-outline">
+                        <select class="form-select"
+                                id="StatusPayment"
+                                name="StatusPayment">
+                            >
+                            <option value="Thanh toán khi nhận hàng">Thanh toán khi nhận hàng</option>
+                            <option value="Thanh toán bằng MOMO">Thanh toán MOMO</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <select class="form-select"
+                                id="StatusShip"
+                                name="StatusShip">
+                            >
+                            <option value="Bắt đầu giao hàng">Bắt đầu giao hàng</option>
+                            <option value="Đã chuẩn bị hàng">Đã chuẩn bị hàng</option>
+                            <option value="Giao thành công">Giao thành công</option>
+
+                        </select>
+                    </div>
+
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <select class="form-select"
+                                id="StatusOrder"
+                                name="StatusOrder">
+                            >
+                            <option value="Đơn hàng được xác nhận">Đơn hàng được xác nhận</option>
+                            <option value="Đơn hàng chưa xác nhận">Đơn hàng chưa xác nhận</option>
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <input type="hidden" value="@Model.PriceSum" id="PriceSum" name="PriceSum" class="form-control form-control-lg" style="border:1px solid gray" />
+            <input type="hidden" value="@Model.idHoaDon" id="idHoaDon" name="idHoaDon" class="form-control form-control-lg" style="border:1px solid gray" />
+            <input type="hidden" value="@Model.CreatedDate" id="CreatedDate" name="CreatedDate" class="form-control form-control-lg" style="border:1px solid gray" />
+
+
+
+            <button type="submit" class="btn btn-primary btn-block mb-4">Xác nhận</button>
+        </form>
+    </div>
+</div>
+

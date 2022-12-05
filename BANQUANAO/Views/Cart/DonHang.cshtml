@@ -24,7 +24,7 @@
             @foreach (var item in Model)
             {
                 int idUser = Convert.ToInt32(Session["idUser"]);
-                if (idUser == item.CustomerID)
+                if (idUser == item.ID)
                 {
 
                   string FullName = Session["FullName"].ToString();
@@ -39,24 +39,62 @@
                             </div>
                         </td>
                         <td>
-                            <p class="fw-normal mb-1">@item.OrderID</p>
+                            <p class="fw-normal mb-1">@item.idHoaDon</p>
                         </td>
                         <td>
-                            <span class="badge badge-success rounded-pill d-inline">@item.StatusShip</span>
+                            <span class="badge badge-success rounded-pill d-inline">
+                                @{
+                                    if (item.StatusShip == "Bắt đầu giao hàng")
+                                    {
+                                        <span style="color: green">Bắt đầu giao hàng</span>
+                                    }
+                                    else if (item.StatusShip == "Đã chuẩn bị hàng")
+                                    {
+                                        <span style="color: red">Đã chuẩn bị hàng</span>
+
+                                    }
+                                    else if (item.StatusShip == "Giao thành công")
+                                    {
+                                        <span style="color: green">Giao thành công</span>
+
+                                    }
+                                    else if (item.StatusOrder == "Đang chờ xác nhận")
+                                    {
+                                        <span style="color: red">Đang chờ xác nhận</span>
+
+                                    }
+                                }
+                            </span>
                         </td>
                         <td>
-                            <span class="badge badge-success rounded-pill d-inline">@item.StatusShip</span>
+                            <span class="badge badge-success rounded-pill d-inline">@item.StatusPayment</span>
                         </td>
                         <td>
-                            <span class="badge badge-success rounded-pill d-inline">@item.StatusOrder</span>
+                            <span class="badge badge-success rounded-pill d-inline">
+                                @{
+                                    if (item.StatusOrder == "Đơn hàng được xác nhận")
+                                    {
+                                        <span style="color: green">Đơn hàng được xác nhận</span>
+                                    }
+                                    else if(item.StatusOrder == "Đang chờ xác nhận")
+                                    {
+                                        <span style="color: red">Đang chờ xác nhận</span>
+
+                                    }
+                                }
+                             </span>
                         </td>
                         <td>
                             <p class="fw-normal mb-1">@item.PriceSum VNĐ</p>
                         </td>
                         <td>
-                            <p class="fw-normal mb-1">
+                            <form action="/Cart/DetailBill" method="post">
+                                <input type="hidden" value="@item.idHoaDon" id="idHoaDon" name="idHoaDon" class="form-control form-control-lg" style="border:1px solid gray" />
+                                <p class="fw-normal mb-1">
                                 <a href="~/Cart/DetailBill">Chi tiết</a>
                             </p>
+                            </form>
+                            
                         </td>
                     </tr>
 

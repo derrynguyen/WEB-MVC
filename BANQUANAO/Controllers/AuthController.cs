@@ -109,7 +109,6 @@ namespace BANQUANAO.Controllers
                     Session["UserName"] = data.FirstOrDefault().UserName;
                     Session["idUser"] = data.FirstOrDefault().ID;
                     Session["Role"] = data.FirstOrDefault().Role;
-
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -138,6 +137,7 @@ namespace BANQUANAO.Controllers
             profile.Andreas = user.Andreas;
             profile.FullName = user.FullName;
             profile.Email = user.Email;
+            profile.phoneNumber = user.phoneNumber;
             db.SaveChanges();
 
             if (Avatar != null && Avatar.ContentLength > 0)

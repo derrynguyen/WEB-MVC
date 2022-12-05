@@ -187,6 +187,54 @@
     <Compile Include="Migrations\202211171448420_af1.designer.cs">
       <DependentUpon>202211171448420_af1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212020944481_awfawfawfawfawfafaf.cs" />
+    <Compile Include="Migrations\202212020944481_awfawfawfawfawfafaf.designer.cs">
+      <DependentUpon>202212020944481_awfawfawfawfawfafaf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212040858112_afawf.cs" />
+    <Compile Include="Migrations\202212040858112_afawf.designer.cs">
+      <DependentUpon>202212040858112_afawf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212040903248_afawf1.cs" />
+    <Compile Include="Migrations\202212040903248_afawf1.designer.cs">
+      <DependentUpon>202212040903248_afawf1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212040914141_afawf2.cs" />
+    <Compile Include="Migrations\202212040914141_afawf2.designer.cs">
+      <DependentUpon>202212040914141_afawf2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212040949302_afawf3.cs" />
+    <Compile Include="Migrations\202212040949302_afawf3.designer.cs">
+      <DependentUpon>202212040949302_afawf3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212040956378_afawf4.cs" />
+    <Compile Include="Migrations\202212040956378_afawf4.designer.cs">
+      <DependentUpon>202212040956378_afawf4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212040958004_afawf5.cs" />
+    <Compile Include="Migrations\202212040958004_afawf5.designer.cs">
+      <DependentUpon>202212040958004_afawf5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212041258565_awf.cs" />
+    <Compile Include="Migrations\202212041258565_awf.designer.cs">
+      <DependentUpon>202212041258565_awf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212041334062_awf1.cs" />
+    <Compile Include="Migrations\202212041334062_awf1.designer.cs">
+      <DependentUpon>202212041334062_awf1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212041416350_awf2.cs" />
+    <Compile Include="Migrations\202212041416350_awf2.designer.cs">
+      <DependentUpon>202212041416350_awf2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212041424407_awf3.cs" />
+    <Compile Include="Migrations\202212041424407_awf3.designer.cs">
+      <DependentUpon>202212041424407_awf3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212041432434_awf4.cs" />
+    <Compile Include="Migrations\202212041432434_awf4.designer.cs">
+      <DependentUpon>202212041432434_awf4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -248,6 +296,14 @@
     <Content Include="Views\Cart\DetailBill.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Account.cshtml" />
+    <Content Include="Views\Admin\DeleteUser.cshtml" />
+    <Content Include="Views\Admin\EditUser.cshtml" />
+    <Content Include="Views\Home\error404.cshtml" />
+    <Content Include="Views\Admin\DanhSachDon.cshtml" />
+    <Content Include="Views\Admin\DetailBill.cshtml" />
+    <Content Include="Views\Admin\EditDon.cshtml" />
+    <Content Include="Views\Admin\XoaDon.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -265,6 +321,42 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211171448420_af1.resx">
       <DependentUpon>202211171448420_af1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212020944481_awfawfawfawfawfafaf.resx">
+      <DependentUpon>202212020944481_awfawfawfawfawfafaf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212040858112_afawf.resx">
+      <DependentUpon>202212040858112_afawf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212040903248_afawf1.resx">
+      <DependentUpon>202212040903248_afawf1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212040914141_afawf2.resx">
+      <DependentUpon>202212040914141_afawf2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212040949302_afawf3.resx">
+      <DependentUpon>202212040949302_afawf3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212040956378_afawf4.resx">
+      <DependentUpon>202212040956378_afawf4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212040958004_afawf5.resx">
+      <DependentUpon>202212040958004_afawf5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212041258565_awf.resx">
+      <DependentUpon>202212041258565_awf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212041334062_awf1.resx">
+      <DependentUpon>202212041334062_awf1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212041416350_awf2.resx">
+      <DependentUpon>202212041416350_awf2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212041424407_awf3.resx">
+      <DependentUpon>202212041424407_awf3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212041432434_awf4.resx">
+      <DependentUpon>202212041432434_awf4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

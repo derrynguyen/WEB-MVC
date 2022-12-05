@@ -1,0 +1,20 @@
+﻿@model BANQUANAO.Models.Users
+
+@{
+    ViewBag.Title = "Xóa người dùng";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+<div style="width:100%;height:100vh">
+    <div class="container mt-5 mb-10">
+        <h3>Xóa người dùng</h3>
+        <form action="/admin/DeleteNguoiDung/@Model.ID   " method="post" enctype="multipart/form-data">
+            <input type="hidden" id="idProduct" name="idProduct" class="form-control" value="@Model.ID" />
+            <input type="hidden" id="nameProduct" name="nameProduct" class="form-control" value="@Model.FullName" />
+            <h1>Bạn có đồng ý xóa @Model.FullName</h1>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Xóa tài khoản</button>
+        </form>
+    </div>
+</div>
+

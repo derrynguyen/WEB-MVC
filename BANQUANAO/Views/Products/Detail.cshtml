@@ -33,7 +33,50 @@
             <p style="font-size: 16px">Nơi sản xuất: <span style="color: black; font-size: 19px">@Model.AndreasProduct</span></p>
             <p style="font-size: 16px">Phiên bản: <span style="color: black; font-size: 19px">@Model.versionProduct</span></p>
 
+            <p style="font-size: 16px">
+                Đánh giá:
+                @if (Model.rateProduct ==  0)
+                {
+                    <span style="color: black; font-size: 19px"> Chưa có đánh giá</span>
 
+                }
+                @if (Model.rateProduct == 1)
+                {
+                    <span style="color: yellow; font-size: 19px"> <i class="fas fa-star"></i></span>
+
+                }
+                @if (Model.rateProduct == 2)
+                {
+                    <span style="color: yellow; font-size: 19px"> <i class="fas fa-star"></i></span>
+                    <span style="color: yellow; font-size: 19px"> <i class="fas fa-star"></i></span>
+
+                }
+                @if (Model.rateProduct == 3)
+                {
+                    <span style="color: yellow; font-size: 19px"> <i class="fas fa-star"></i></span>
+                    <span style="color: yellow; font-size: 19px"> <i class="fas fa-star"></i></span>
+                    <span style="color: yellow; font-size: 19px"> <i class="fas fa-star"></i></span>
+
+                }
+                @if (Model.rateProduct == 4)
+                {
+                    <span style="color: yellow; font-size: 19px"> <i class="fas fa-star"></i></span>
+                    <span style="color: yellow; font-size: 19px"> <i class="fas fa-star"></i></span>
+                    <span style="color: yellow; font-size: 19px"> <i class="fas fa-star"></i></span>
+                    <span style="color: yellow; font-size: 19px"> <i class="fas fa-star"></i></span>
+
+                }
+                @if (Model.rateProduct == 5)
+                {
+                    <span style="color: yellow; font-size: 19px"> <i class="fas fa-star"></i></span>
+                    <span style="color: yellow; font-size: 19px"> <i class="fas fa-star"></i></span>
+                    <span style="color: yellow; font-size: 19px"> <i class="fas fa-star"></i></span>
+                    <span style="color: yellow; font-size: 19px"> <i class="fas fa-star"></i></span>
+                    <span style="color: yellow; font-size: 19px"> <i class="fas fa-star"></i></span>
+
+                }
+
+            </p>
 
             <form action="/Cart/ThemVaoGio" method="post">
                 @{
@@ -45,8 +88,7 @@
                 <input type="hidden" name="priceProduct" id="priceProduct" value="@Model.priceProduct" />
 
                 <input type="hidden" name="colorProduct" id="colorProduct" value="@Model.colorProduct" />
-
-                <input type="hidden" name="IDUser" id="IDUser" value="@idUser" />
+                <input type="hidden" name="ID" id="ID" value="@idUser" />
                 <h3>Size</h3>
                 <div class="form-outline" style="width:30vh">
                     <select class="form-select"

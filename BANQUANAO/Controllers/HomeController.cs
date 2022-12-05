@@ -28,6 +28,9 @@ namespace BANQUANAO.Controllers
         {
 
             List<Products> products = db.Products.ToList();
+            products = products.Where(row => row.rateProduct > 4).ToList();
+            //Products products = db.Products.Where(row => row.releaseProduct. > 4).FirstOrDefault();
+
 
             int noOfRecordPerpage = 4;
             int noOfPages = Convert.ToInt32(Math.Ceiling
@@ -37,6 +40,10 @@ namespace BANQUANAO.Controllers
             ViewBag.noOfPages = noOfPages;
             products = products.Skip(ChuyenTrang).Take(noOfRecordPerpage).ToList();
             return View(products);
+        }
+        public ActionResult error404()
+        {
+            return View();
         }
     }
 }

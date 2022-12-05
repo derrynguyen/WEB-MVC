@@ -78,3 +78,15 @@ D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.AddUser.resources
 D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.csproj.GenerateResource.cache
 D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.af.resources
 D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.af1.resources
+D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.awfawfawfawfawfafaf.resources
+D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.afawf.resources
+D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.afawf1.resources
+D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.afawf2.resources
+D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.afawf3.resources
+D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.afawf4.resources
+D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.afawf5.resources
+D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.awf.resources
+D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.awf1.resources
+D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.awf2.resources
+D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.awf3.resources
+D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.awf4.resources

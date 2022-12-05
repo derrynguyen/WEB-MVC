@@ -37,11 +37,14 @@
                     <div class="card d-flex justify-content-center " style="width:60vh">
                         <div class="d-flex justify-content-around align-items-center" style="margin-top:3vh">
                             <h5 class="card-title" style="font-size:17px;color:gray">
-                                <img style="position:relative;left:-2vh" src="~/Content/Avatar/@item.Users.Avatar"
-                                     class="rounded-circle"
-                                     height="45"
-                                     loading="lazy" />
-                                Người đăng: <span style="font-size: 20px; color: black">@item.Users.FullName</span>
+                                <a style="font-size: 20px; color: black" href="~/Auth/profileUser/@item.ID">
+                                    <img style="position:relative;left:-2vh" src="~/Content/Avatar/@item.Users.Avatar"
+                                         class="rounded-circle"
+                                         height="45"
+                                         loading="lazy" />
+                                    Người đăng: <span style="font-size: 20px; color: black">@item.Users.FullName</span>
+                                </a>
+                              
                             </h5>
 
                             <h5 class="card-title" style="font-size: 17px; color: gray">Thời gian: <span style="font-size: 20px; color: black ">@item.timePosts.ToString("dd/MM/yyyy")</span></h5>

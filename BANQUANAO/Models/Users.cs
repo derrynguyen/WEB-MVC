@@ -26,5 +26,6 @@ namespace BANQUANAO.Models
 
         public string Avatar { get; set; }
         public string Andreas { get; set; }
+        public int phoneNumber { get; set; }
     }
 }

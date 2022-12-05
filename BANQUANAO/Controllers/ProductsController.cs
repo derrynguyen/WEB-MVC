@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,24 +13,29 @@ namespace BANQUANAO.Controllers
     {
         // GET: Products
         /*TYPE :
-      1 : ÁO POLO
-      2 : ÁO SƠ MI
-      3 : ÁO PHÔNG
-      4 : ÁO CADIGAN
-      5 : ÁO HOODIE
-      6 : ÁO JACKET
-      7 : TÚI / BACKPACK
-      8 : GIÀY
-      9 : PHỤ KIỆN
-      10 : QUẦN
+   <option value="1">ÁO SƠ MI</option>
+                                <option value="2">ÁO POLO</option>
+                                <option value="3">ÁO NỈ</option>
+                                <option value="4">QUẦN</option>
+                                <option value="5">GIÀY</option>
+                                <option value="6">BALO</option>
+                                <option value="7">ÁO PHÔNG</option>
+                                <option value="8">ÁO LEN</option>
+                                <option value="9">ÁO KHOÁC</option>
+                                <option value="10">QUẦN SORT</option>
+                                <option value="11">TÚI-VÍ</option>
+                                <option value="12">VALLI KÉO</option>
+                                <option value="13">PHỤ KIỆN</option>
+                                <option value="14">VÁY</option>
       */
         // GET: Home
         ConnectDB db = new ConnectDB();
-        public ActionResult Index(string SortColumn = "ProductID", int page = 0)
+        public ActionResult Index(string search = "", string SortColumn = "ProductID", int page = 0, int TypePro = 0)
         {
-            List<Products> products = db.Products.ToList();
             ViewBag.Brand = db.Brands.ToList();
-
+            List<Products> products = db.Products.Where(row =>
+              row.nameProduct.Contains(search)).ToList();
+            ViewBag.Search = search;
 
             ViewBag.SortColumn = SortColumn;
             if (SortColumn == "GiaTang")
@@ -40,7 +46,77 @@ namespace BANQUANAO.Controllers
             {
                 products = products.OrderByDescending(row => row.priceProduct).ToList();
             }
-            foreach(var brand in ViewBag.Brand)
+            if (SortColumn == "AOPOLO")
+            {
+                TypePro = 2;
+                products = products.Where(row => row.typeProduct == TypePro.ToString()).ToList();
+            }
+            if (SortColumn == "AOSOMI")
+            {
+                TypePro = 1;
+                products = products.Where(row => row.typeProduct == TypePro.ToString()).ToList();
+            }
+            if (SortColumn == "AONI")
+            {
+                TypePro = 3;
+                products = products.Where(row => row.typeProduct == TypePro.ToString()).ToList();
+            }
+            if (SortColumn == "QUAN")
+            {
+                TypePro = 4;
+                products = products.Where(row => row.typeProduct == TypePro.ToString()).ToList();
+            }
+            if (SortColumn == "GIAY")
+            {
+                TypePro = 5;
+                products = products.Where(row => row.typeProduct == TypePro.ToString()).ToList();
+            }
+            if (SortColumn == "BALO")
+            {
+                TypePro = 6;
+                products = products.Where(row => row.typeProduct == TypePro.ToString()).ToList();
+            }
+            if (SortColumn == "AOPHONG")
+            {
+                TypePro = 7;
+                products = products.Where(row => row.typeProduct == TypePro.ToString()).ToList();
+            }
+            if (SortColumn == "AOLEN")
+            {
+                TypePro = 8;
+                products = products.Where(row => row.typeProduct == TypePro.ToString()).ToList();
+            }
+            if (SortColumn == "AOKHOAC")
+            {
+                TypePro = 9;
+                products = products.Where(row => row.typeProduct == TypePro.ToString()).ToList();
+            }
+            if (SortColumn == "QUANSHORT")
+            {
+                TypePro = 10;
+                products = products.Where(row => row.typeProduct == TypePro.ToString()).ToList();
+            }
+            if (SortColumn == "TUIVI")
+            {
+                TypePro = 11;
+                products = products.Where(row => row.typeProduct == TypePro.ToString()).ToList();
+            }
+            if (SortColumn == "VALIKEO")
+            {
+                TypePro = 12;
+                products = products.Where(row => row.typeProduct == TypePro.ToString()).ToList();
+            }
+            if (SortColumn == "PHUKIEN")
+            {
+                TypePro = 13;
+                products = products.Where(row => row.typeProduct == TypePro.ToString()).ToList();
+            }
+            if (SortColumn == "VAY")
+            {
+                TypePro = 14;
+                products = products.Where(row => row.typeProduct == TypePro.ToString()).ToList();
+            }
+            foreach (var brand in ViewBag.Brand)
             {
                 if (SortColumn == brand.nameBrand)
                 {

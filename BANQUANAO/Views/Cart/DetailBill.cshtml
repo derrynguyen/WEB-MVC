@@ -1,7 +1,7 @@
 ﻿@model List<BANQUANAO.Models.ListProductBill>
 
 @{
-    ViewBag.Title = "DetailBill";
+    ViewBag.Title = "Chi tiết đơn hàng";
     Layout = "~/Views/Shared/Main.cshtml";
 }
 
@@ -21,17 +21,19 @@
             @foreach (var item in Model)
             {
                 int idUser = Convert.ToInt32(Session["idUser"]);
-                if (idUser == item.IDUser)
+
+                if (idUser == item.ID)
                 {
                     <tr>
                         <th scope="row">@item.nameProduct</th>
                         <td>@item.Amount</td>
                         <td>@item.sizeProduct</td>
                         <td>@item.colorProduct</td>
-                        <td>@item.TotalPrice.ToString("#,##0").Replace(',', '.') VNĐ</td>
+                        <td>@item.priceProduct.ToString("#,##0").Replace(',', '.') VNĐ</td>
 
                     </tr>
                 }
+                
             }
 
 

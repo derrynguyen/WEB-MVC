@@ -15,7 +15,8 @@ namespace BANQUANAO.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            List<Users> Users = db.Users.ToList();
+            return View(Users);
         }
         public ActionResult Edit(int id)
         {
@@ -24,11 +25,29 @@ namespace BANQUANAO.Controllers
 
             return View(pro);
         }
+        public ActionResult EditUser(int id)
+        {
+            Users user = db.Users.Where(row => row.ID == id).FirstOrDefault();
+
+            return View(user);
+        }
         public ActionResult Delete(int id)
         {
             Products pro = db.Products.Where(row => row.idProduct == id).FirstOrDefault();
 
             return View(pro);
+        }
+        public ActionResult DeleteUser(int id)
+        {
+            Users user = db.Users.Where(row => row.ID == id).FirstOrDefault();
+
+            return View(user);
+        }
+        public ActionResult Account()
+        {
+            List<Users> Users = db.Users.ToList();
+
+            return View(Users);
         }
         public ActionResult listProducts(int page = 0)
         {
@@ -48,6 +67,31 @@ namespace BANQUANAO.Controllers
             return View(products);
         }
        
+        public ActionResult DanhSachDon()
+        {
+            List<Order> order = db.Order.ToList();
+
+            return View(order);
+        }
+        public ActionResult DetailBill()
+        {
+            List<ListProductBill> bill = db.ListProductBill.ToList();
+
+            return View(bill);
+        }
+        public ActionResult EditDon(int id)
+        {
+            Order donHang = db.Order.Where(row => row.OrderID == id).FirstOrDefault();
+
+            return View(donHang);
+        }
+        public ActionResult XoaDon(int id)
+        {
+            Order donHang = db.Order.Where(row => row.OrderID == id).FirstOrDefault();
+
+            return View(donHang);
+        }
+        
         [HttpPost]
         public ActionResult AddProduct(Products p, HttpPostedFileBase img1Product, HttpPostedFileBase img2Product, HttpPostedFileBase img3Product)
 
@@ -125,6 +169,7 @@ namespace BANQUANAO.Controllers
             pronew.rateProduct = pro.rateProduct;
             pronew.AmountProduct = pro.AmountProduct;
             pronew.releaseProduct = pro.releaseProduct;
+            db.SaveChanges();
 
             if (img1Product != null && img1Product.ContentLength > 0)
             {
@@ -140,8 +185,69 @@ namespace BANQUANAO.Controllers
                 unv.img1Product = _FileName;
                 db.SaveChanges();
             }
-            db.SaveChanges();
             return RedirectToAction("listProducts", "Admin");
+        }
+        public ActionResult DeleteNguoiDung(int id)
+        {
+            Users user = db.Users.Where(row => row.ID == id).FirstOrDefault();
+            db.Users.Remove(user);
+            db.SaveChanges();
+            return RedirectToAction("Account", "Admin");
+        }
+        public ActionResult EditUsers(Users user, HttpPostedFileBase Avatar)
+        {
+            Users profile = db.Users.Where(row => row.ID == user.ID).FirstOrDefault();
+            profile.UserName = user.UserName;
+            profile.Andreas = user.Andreas;
+            profile.FullName = user.FullName;
+            profile.Email = user.Email;
+            profile.phoneNumber = user.phoneNumber;
+            profile.Role = user.Role;
+
+            db.SaveChanges();
+
+            if (Avatar != null && Avatar.ContentLength > 0)
+            {
+                int id = profile.ID;
+
+                string _FileName = "";
+                int index = Avatar.FileName.IndexOf('.');
+                _FileName = "avata" + id.ToString() + "." + Avatar.FileName.Substring(index + 1);
+                string _path = Path.Combine(Server.MapPath("~/Content/Avatar"), _FileName);
+                Avatar.SaveAs(_path);
+
+                Users unv = db.Users.FirstOrDefault(x => x.ID == id);
+                unv.Avatar = _FileName;
+                db.SaveChanges();
+            }
+
+
+
+            return RedirectToAction("Account", "Admin");
+        }
+        public ActionResult EditDonHang(Order o)
+        {
+            Order bill = db.Order.Where(row => row.OrderID == o.OrderID).FirstOrDefault();
+            bill.OrderID = o.OrderID;
+            bill.CreatedDate = o.CreatedDate;
+            bill.StatusPayment = o.StatusPayment;
+            bill.StatusShip = o.StatusShip;
+            bill.StatusOrder = o.StatusOrder;
+            bill.PriceSum = o.PriceSum;
+            bill.idHoaDon = o.idHoaDon;
+
+
+            db.SaveChanges();
+
+            return RedirectToAction("DanhSachDon", "Admin");
+
+        }
+        public ActionResult xoaDonHang(int id)
+        {
+            Order don = db.Order.Where(row => row.OrderID == id).FirstOrDefault();
+            db.Order.Remove(don);
+            db.SaveChanges();
+            return RedirectToAction("DanhSachDon", "Admin");
         }
     }
 }
