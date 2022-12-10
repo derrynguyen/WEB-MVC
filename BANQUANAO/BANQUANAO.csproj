@@ -51,6 +51,13 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -60,6 +67,12 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.9\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -164,7 +177,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIController\ProductsController.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
@@ -234,6 +249,22 @@
     <Compile Include="Migrations\202212041432434_awf4.cs" />
     <Compile Include="Migrations\202212041432434_awf4.designer.cs">
       <DependentUpon>202212041432434_awf4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212051523256_afag.cs" />
+    <Compile Include="Migrations\202212051523256_afag.designer.cs">
+      <DependentUpon>202212051523256_afag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212071524482_afgas.cs" />
+    <Compile Include="Migrations\202212071524482_afgas.designer.cs">
+      <DependentUpon>202212071524482_afgas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212090435134_asdas.cs" />
+    <Compile Include="Migrations\202212090435134_asdas.designer.cs">
+      <DependentUpon>202212090435134_asdas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212090441023_asdas1.cs" />
+    <Compile Include="Migrations\202212090441023_asdas1.designer.cs">
+      <DependentUpon>202212090441023_asdas1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Brand.cs" />
@@ -357,6 +388,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202212041432434_awf4.resx">
       <DependentUpon>202212041432434_awf4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212051523256_afag.resx">
+      <DependentUpon>202212051523256_afag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212071524482_afgas.resx">
+      <DependentUpon>202212071524482_afgas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212090435134_asdas.resx">
+      <DependentUpon>202212090435134_asdas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212090441023_asdas1.resx">
+      <DependentUpon>202212090441023_asdas1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

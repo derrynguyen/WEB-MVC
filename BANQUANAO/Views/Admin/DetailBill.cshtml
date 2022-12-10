@@ -21,7 +21,9 @@
         <tbody>
             @foreach (var item in Model)
             {
-               
+
+                if (item.ID == ViewBag.IDUser)
+                {
                     <tr>
                         <th scope="row">@item.nameProduct</th>
                         <td>@item.Users.FullName</td>
@@ -33,7 +35,10 @@
                     </tr>
                 }
 
-            
+
+            }
+
+
 
 
         </tbody>

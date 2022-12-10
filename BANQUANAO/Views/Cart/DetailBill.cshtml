@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/Main.cshtml";
 }
 
-<div class="container" style="margin-top:20vh;margin-bottom:1vh; height:40vh">
+<div class="container" style="margin-top:20vh;margin-bottom:5vh; height:60vh">
     <h3 class="text-center">Chi tiết hóa đơn </h3>
     <table class="table mt-1" style="margin-top:3vh">
         <thead>
@@ -14,27 +14,37 @@
                 <th scope="col">Số lượng</th>
                 <th scope="col">Size</th>
                 <th scope="col">Màu</th>
+
                 <th scope="col">Giá</th>
             </tr>
         </thead>
+  
+
         <tbody>
-            @foreach (var item in Model)
+        @foreach (var item in Model)
+        {
+            int idUser = Convert.ToInt32(Session["idUser"]);
+
+            if (idUser == item.ID)
             {
-                int idUser = Convert.ToInt32(Session["idUser"]);
+                <tr>
 
-                if (idUser == item.ID)
-                {
-                    <tr>
-                        <th scope="row">@item.nameProduct</th>
-                        <td>@item.Amount</td>
-                        <td>@item.sizeProduct</td>
-                        <td>@item.colorProduct</td>
-                        <td>@item.priceProduct.ToString("#,##0").Replace(',', '.') VNĐ</td>
+                    <th scope="row">@item.nameProduct</th>
+                    <td>@item.Amount</td>
+                    <td>@item.sizeProduct</td>
 
-                    </tr>
-                }
-                
+                    <td>@item.colorProduct</td>
+
+                    <td>@item.priceProduct.ToString("#,##0").Replace(',', '.') VNĐ</td>
+
+                </tr>
             }
+            else
+            {
+               
+            }
+
+        }
 
 
         </tbody>

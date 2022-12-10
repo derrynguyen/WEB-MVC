@@ -136,6 +136,9 @@
 
                                 </select>
                             </div>
+
+
+
                             @foreach (var item in Model)
                             {
                                 if (idUser != item.ID)
@@ -150,15 +153,19 @@
                                     <input type="hidden" name="StatusShip" id="StatusShip" value="Đang chờ xác nhận" />
                                     <input type="hidden" name="StatusOrder" id="StatusOrder" value="Đang chờ xác nhận" />
                                     <input type="hidden" name="CreatedDate" id="CreatedDate" value="@CreatedDate" />
-                                    <input type="hidden" name="idHoaDon" id="idHoaDon" value="@maDonHang" />
+                                    <input type="hidden" name="idHoaDon" id="idHoaDon" value="@ViewBag.maDonHang" />
                                     <input type="hidden" name="ID" id="ID" value="@idUser" />
 
+                                    for (int i = 0; i < Model.Count; i++)
+                                    {
+                                        <input type="hidden" name="nameProduct" id="nameProduct" value="@item.nameProduct" />
+
+                                    }
 
                                 }
 
-
-
                             }
+
 
                             <button type="submit" class="btn btn-primary btn-lg btn-block mt-2" id="btnPayment">
                                 Hoàn tất đơn hàng

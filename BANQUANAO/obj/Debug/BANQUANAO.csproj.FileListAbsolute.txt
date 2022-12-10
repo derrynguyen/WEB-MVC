@@ -90,3 +90,15 @@ D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.awf1.resources
 D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.awf2.resources
 D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.awf3.resources
 D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.awf4.resources
+D:\MVC\BANQUANAO\BANQUANAO\bin\Newtonsoft.Json.dll
+D:\MVC\BANQUANAO\BANQUANAO\bin\System.Net.Http.Formatting.dll
+D:\MVC\BANQUANAO\BANQUANAO\bin\System.Web.Http.dll
+D:\MVC\BANQUANAO\BANQUANAO\bin\System.Web.Http.WebHost.dll
+D:\MVC\BANQUANAO\BANQUANAO\bin\Newtonsoft.Json.xml
+D:\MVC\BANQUANAO\BANQUANAO\bin\System.Net.Http.Formatting.xml
+D:\MVC\BANQUANAO\BANQUANAO\bin\System.Web.Http.xml
+D:\MVC\BANQUANAO\BANQUANAO\bin\System.Web.Http.WebHost.xml
+D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.afag.resources
+D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.afgas.resources
+D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.asdas.resources
+D:\MVC\BANQUANAO\BANQUANAO\obj\Debug\BANQUANAO.Migrations.asdas1.resources

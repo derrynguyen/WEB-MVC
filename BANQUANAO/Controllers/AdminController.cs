@@ -73,9 +73,11 @@ namespace BANQUANAO.Controllers
 
             return View(order);
         }
-        public ActionResult DetailBill()
+        public ActionResult DetailBill(int ID)
         {
             List<ListProductBill> bill = db.ListProductBill.ToList();
+            ViewBag.IDUser = ID;
+
 
             return View(bill);
         }
@@ -87,7 +89,9 @@ namespace BANQUANAO.Controllers
         }
         public ActionResult XoaDon(int id)
         {
-            Order donHang = db.Order.Where(row => row.OrderID == id).FirstOrDefault();
+
+            Order donHang = db.Order.Where(row => row.ID == id).FirstOrDefault();
+     
 
             return View(donHang);
         }
@@ -234,7 +238,6 @@ namespace BANQUANAO.Controllers
             bill.StatusShip = o.StatusShip;
             bill.StatusOrder = o.StatusOrder;
             bill.PriceSum = o.PriceSum;
-            bill.idHoaDon = o.idHoaDon;
 
 
             db.SaveChanges();
@@ -242,12 +245,18 @@ namespace BANQUANAO.Controllers
             return RedirectToAction("DanhSachDon", "Admin");
 
         }
-        public ActionResult xoaDonHang(int id)
-        {
-            Order don = db.Order.Where(row => row.OrderID == id).FirstOrDefault();
-            db.Order.Remove(don);
-            db.SaveChanges();
-            return RedirectToAction("DanhSachDon", "Admin");
-        }
+        //public ActionResult xoaDonHang(int id)
+        //{
+        //    ListProductBill bill = db.ListProductBill.Where(row => row.ID == id).FirstOrDefault();
+        //    if (bill.ID == id)
+        //    {
+        //        db.ListProductBill.RemoveRange(db.ListProductBill.Where(row => row.ID == id));
+        //    }
+        //    Order don = db.Order.Where(row => row.ID == id).FirstOrDefault();
+
+        //    db.Order.Remove(don);
+        //    db.SaveChanges();
+        //    return RedirectToAction("DanhSachDon", "Admin");
+        //}
     }
 }

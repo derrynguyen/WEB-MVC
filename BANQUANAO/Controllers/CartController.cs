@@ -1,12 +1,19 @@
 ﻿using BANQUANAO.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
+using System.Web.Http.Results;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace BANQUANAO.Controllers
 {
@@ -14,14 +21,25 @@ namespace BANQUANAO.Controllers
     {
         // GET: Cart
         ConnectDB db = new ConnectDB();
+       
 
+        public int MaHang()
+        {
+            Random r = new Random();
+            int maDonHang = r.Next(11111, 99999);
+            return maDonHang;
+        }
         public ActionResult Index( )
         {
             List<CartItem> cart = db.CartItem.ToList();
+            ViewBag.maDonHang = MaHang();
+
+
             //List<CartItem> Cart = Session["Cart"] as List<CartItem>;
             return View(cart);
         }
        
+
         [HttpPost]
         public ActionResult ThemVaoGio( CartItem c , int Amount , ListProductBill bill)
         {
@@ -31,6 +49,7 @@ namespace BANQUANAO.Controllers
             }
             else
             {
+
                 db.ListProductBill.Add(bill);
                 db.SaveChanges();
                 db.CartItem.Add(c);
@@ -43,7 +62,7 @@ namespace BANQUANAO.Controllers
 
 
         }
-        public RedirectToRouteResult XoaKhoiGio(int idCart )
+        public ActionResult XoaKhoiGio(int idCart )
         {
             CartItem cart = db.CartItem.Where(row => row.idCart == idCart).FirstOrDefault();
             db.CartItem.Remove(cart);
@@ -78,31 +97,45 @@ namespace BANQUANAO.Controllers
             //order = order.Skip(ChuyenTrang).Take(noOfRecordPerpage).ToList();
             return View(order);
         }
+
+
         [HttpPost]
+
         public ActionResult Payment(Order o, int IDUser)
         {
+            Order orde = db.Order.Where(row => row.ID == IDUser).FirstOrDefault();
+
             CartItem cart = db.CartItem.Where(row => row.ID == IDUser).FirstOrDefault();
             if (cart.ID == IDUser)
             {
                 db.CartItem.RemoveRange(db.CartItem.Where(row => row.ID == IDUser));
-                db.SaveChanges();
-
             }
 
-            db.Order.Add(o);
             db.SaveChanges();
 
 
 
-            List<Order> order = db.Order.ToList();
+            if (orde == null)
+            {
+                db.Order.Add(o);
+                db.SaveChanges();
+            }
+            else
+            {
+                db.SaveChanges();
+            }
+
+           
+
+
+
 
             return RedirectToAction("DonHang", "Cart");
         }
 
-        public ActionResult DetailBill()
+        public ActionResult DetailBill(Order l)
         {
             List<ListProductBill> bill = db.ListProductBill.ToList();
-
 
           
             return View(bill);

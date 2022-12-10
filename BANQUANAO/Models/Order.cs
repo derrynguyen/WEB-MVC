@@ -19,5 +19,6 @@ namespace BANQUANAO.Models
         public string idHoaDon { get; set; }
 
         public virtual Users Users { get; set; }
+
     }
 }
