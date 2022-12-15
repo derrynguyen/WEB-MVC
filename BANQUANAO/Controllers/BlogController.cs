@@ -16,9 +16,12 @@ namespace BANQUANAO.Controllers
         ConnectDB db = new ConnectDB();
         public ActionResult Index()
         {
+            List<Posts> blog = db.Posts.ToList();
+            
+            blog = blog.OrderBy(row => row.ID).ToList();
+            
 
-            List<Posts> products = db.Posts.ToList();
-            return View(products);
+            return View(blog);
         }
         public bool Insert(Posts entity)
         {
